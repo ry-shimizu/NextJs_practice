@@ -6,12 +6,15 @@ module.exports = {
     '../src/**/*.stories.mdx',
     '../src/**/*.stories.@(js|jsx|ts|tsx)'
   ],
+
   addons: [
     '@storybook/addon-links',
     '@storybook/addon-essentials',
     '@storybook/addon-postcss',
   ],
+
   staticDirs: ['public'],
+
   babel: async options => ({
     ...options,
     plugins: [
@@ -20,6 +23,7 @@ module.exports = {
       '@babel/plugin-proposal-private-property-in-object',
     ],
   }),
+
   webpackFinal: async (config) => {
     config.resolve.plugins = [
       new TsconfigPathsPlugin({
@@ -29,8 +33,15 @@ module.exports = {
 
     return config
   },
-  core: {
-    builder: 'webpack5',
-  },
+
   typescript : { reactDocgen: false },
+
+  framework: {
+    name: '@storybook/nextjs',
+    options: {}
+  },
+
+  docs: {
+    autodocs: true
+  }
 }
