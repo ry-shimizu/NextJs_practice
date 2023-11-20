@@ -27,6 +27,7 @@ const AuthContext = React.createContext<AuthContextType>({
   signout: async () => Promise.resolve(),
   mutate: async () => Promise.resolve(undefined),
 })
+
 export const useAuthContext = (): AuthContextType =>
   useContext<AuthContextType>(AuthContext)
 
